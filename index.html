@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Rock Paper Scissors</title>
+  </head>
+  <body>
+    <h1 style="text-align:center; margin-top:20%;">
+      Let's play Rock Paper Scissors!<br />Refresh to play again!
+    </h1>
+    <script type="text/javascript">
+      // TODO: Create an array of the three game choices (Rock, Paper, or Scissors).
+      var gameChoices = ['rock', 'paper', 'scissors']
+
+      var user = {}
+      var computer = {}
+
+      // TODO: Create variables to hold the number of wins, losses, and ties. They start at 0.
+      var wins = 0;
+      var losses = 0;
+      var ties = 0;
+
+      for (var i = 0; i < 3; i++) {
+        // TODO: Randomly choose a choice from the gameChoices array. This is the computer's turn.
+        var computerTurn = gameChoices[Math.floor(Math.random()*3)]
+        console.log(computerTurn)
+
+        // TODO: Collect the user's response and convert to lower case. This is the user's turn.
+        var userTurn = question();
+  
+        function question() {
+          var response = window.prompt("enter 'Rock', 'Paper', or 'Scissors'")
+          if ( !response ) {
+            window.alert( "You need to provide a valid answer! Please try again." );
+            return prompt();
+          }
+
+          response = response.toLowerCase();
+          if (gameChoices.includes(response)){
+            return response
+          } else {
+            question()
+          }
+        }
+
+        // TODO: Create the game logic to run if the user chooses a valid game choice
+        if( userTurn === 'rock' && computerTurn == 'scissors') {
+          wins = wins + 1
+          window.alert('win: ' + userTurn + ' v ' + computerTurn)
+        } else if ( userTurn === 'scissors' && computerTurn == 'paper') {
+          wins = wins + 1
+          window.alert('win: ' + userTurn + ' v ' + computerTurn)
+        } else if ( userTurn === 'paper' && computerTurn == 'rock') {
+          wins = wins + 1
+          window.alert('win: ' + userTurn + ' v ' + computerTurn)
+        } else if ( userTurn ===  computerTurn) {
+          ties = ties + 1
+          window.alert('tie: ' + userTurn + ' v ' + computerTurn)
+        } else {
+        losses = losses + 1
+        window.alert('lose: ' + userTurn + ' v ' + computerTurn)
+        }
+     
+      }
+
+      // TODO: When the game is over, alert the final total to the user. We can use the \n character to make a line break.
+      alert(`${wins} wins\n${losses} losses\n${ties} ties`);
+    </script>
+  </body>
+</html>
